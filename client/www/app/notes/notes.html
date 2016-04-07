@@ -1,0 +1,43 @@
+<!-- View Wrapper -->
+<ion-view title="Notes">
+
+  <!-- Clear Filter Button -->
+  <ion-nav-buttons side="left">
+    <button ng-if="notes.query" ng-click="notes.query = undefined" class="button button-icon ion-close"></button>
+  </ion-nav-buttons>
+
+  <!-- New Classroom Button -->
+  <ion-nav-buttons side="right">
+    <button ng-click="classrooms.create()" class="button button-icon ion-plus"></button>
+  </ion-nav-buttons>
+
+  <!-- Content Wrapper -->
+  <ion-content>
+
+    <!-- Notes -->
+    <ion-list>
+      <ion-item ng-repeat="note in notes.notes | filter: notes.query">
+
+        <!-- Meta Information -->
+        <div class="list card">
+          <div class="item item-avatar">
+            <img ng-src="">
+            <h2>{{note.author}}</h2>
+            <p>{{note.timestamp | date: 'short'}}</p>
+          </div>
+
+          <!-- Scanned Document -->
+          <div class="item item-image">
+            <img ng-src="{{note.attachment.link}}">
+          </div>
+
+          <!-- Tags -->
+          <p class="item">
+            <a href ng-repeat="tag in note.tags" ng-click="notes.query.tags = tag" class="subdued">{{tag}}</a>
+          </p>
+        </div>
+
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

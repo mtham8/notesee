@@ -1,0 +1,18 @@
+<!-- View Wrapper -->
+<ion-view title="Classrooms">
+
+  <!-- New Classroom Button -->
+  <ion-nav-buttons side="right">
+    <button ng-click="classrooms.create()" class="button button-icon ion-plus"></button>
+  </ion-nav-buttons>
+
+  <!-- Content Wrapper -->
+  <ion-content>
+    <ion-list>
+      <ion-item ng-repeat="room in classrooms.rooms" ng-click="classrooms.view()">
+        {{room.name}}
+        <ion-option-button ng-click="classrooms.leave()" class="button-assertive">Leave</ion-option-button>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>
